@@ -1,34 +1,30 @@
 [
   {
     "id": "1",
-    "name": "Technical Fit",
-    "tag": "Maturidade",
-    "icon": "puzzle",
-    "description": "Gerenciamento e Governança",
-    "favorite": false
+    "name": "user-events",
+    "partitions": 3,
+    "replicationFactor": 2,
+    "environment": "dev"
   },
   {
     "id": "2",
-    "name": "Portal Plataforma de Dados e Analytics",
-    "tag": "Maturidade",
-    "icon": "table",
-    "description": "Data Analytics",
-    "favorite": false
+    "name": "order-transactions",
+    "partitions": 5,
+    "replicationFactor": 3,
+    "environment": "dev"
   },
   {
     "id": "3",
-    "name": "Índice de Eficiência da Operação ICC",
-    "tag": "Introduction",
-    "icon": "cog",
-    "description": "Data Analytics",
-    "favorite": true
+    "name": "inventory-updates",
+    "partitions": 2,
+    "replicationFactor": 2,
+    "environment": "stage"
   },
   {
     "id": "4",
-    "name": "Gestão de Minutas (Netlex)",
-    "tag": "Maturidade",
-    "icon": "users",
-    "description": "Ambiente de Trabalho e Colaboração",
-    "favorite": false
+    "name": "notifications",
+    "partitions": 4,
+    "replicationFactor": 3,
+    "environment": "production"
   }
 ]

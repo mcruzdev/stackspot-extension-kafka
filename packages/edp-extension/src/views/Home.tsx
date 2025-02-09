@@ -1,12 +1,8 @@
-import { Button, Flex, Text } from '@citric/core'
-import { alert, confirm, showModal, showRightPanel, showToaster } from '@stack-spot/portal-extension'
-import { ProductCard } from 'components/ProductCard'
-import { ReuseCard } from 'components/ReuseCard'
-import { StudiosList } from 'containers/StudiosList'
-import { root, ViewPropsOf } from 'navigation'
-import { styled } from 'styled-components'
-import products from '../mock/products.json'
-import reuse from '../mock/reuse.json'
+import { Button, Flex, Text } from "@citric/core"
+import { TopicCard } from "components/TopicCard"
+import { ViewPropsOf } from "navigation"
+import { styled } from "styled-components"
+import topics from "../mock/products.json"
 
 const Styled = styled.div`
   h3 {
@@ -28,31 +24,39 @@ const Styled = styled.div`
   }
 `
 
-export const Home = ({ route }: ViewPropsOf<'root'>) => (
+export const Home = ({ route }: ViewPropsOf<"root">) => (
   <Styled>
-    <Text appearance="h2" colorScheme="primary">Lançamentos IU Digital Store</Text>
-    <Text appearance="h3">Produtos</Text>
+    <Text appearance="h2" colorScheme="primary">
+      KaaS Platform
+    </Text>
+    <Text appearance="subtitle1">Kafka as a Service Platform</Text>
+    <Flex alignItems="center" justifyContent="space-between">
+      <Text appearance="h3">Your topics</Text>
+      <Button appearance="outlined" colorScheme="inverse">
+        New topic
+      </Button>
+    </Flex>
     <ul className="card-list">
-      {products.map(p => (
+      {topics.map((p) => (
         <li key={p.id}>
-          <ProductCard
-            tag={p.tag as any}
-            description={p.description}
+          <TopicCard
             name={p.name}
-            href="#"
-            icon={p.icon as any}
-            isFavorite={p.favorite}
-            onChangeFavorite={() => {}}
+            environment={p.environment}
+            onClick={() => console.log(p.name)}
+            partitions={p.partitions}
+            replcationFactor={p.replicationFactor}
           />
         </li>
       ))}
     </ul>
     <Flex justifyContent="space-between" alignItems="center">
-      <Text appearance="h3">Componentes para reúso</Text>
-      <Button appearance="outlined" colorScheme="inverse">abrir biblioteca</Button>
+      <Text appearance="h3">EchoBridge</Text>
+      <Button appearance="outlined" colorScheme="inverse">
+        New component
+      </Button>
     </Flex>
-    <ul className="card-list">
-      {reuse.map(r => (
+    {/* <ul className="card-list">
+      {reuse.map((r) => (
         <li key={r.id}>
           <ReuseCard
             description={r.description}
@@ -62,44 +66,52 @@ export const Home = ({ route }: ViewPropsOf<'root'>) => (
           />
         </li>
       ))}
-    </ul>
-    <Text appearance="h3">Exemplos de interações com overlays</Text>
+    </ul> */}
+    {/* <Text appearance="h3">Exemplos de interações com overlays</Text>
     <Flex>
       <Button
         colorScheme="inverse"
-        onClick={() => showModal({
-          title: 'Minha modal',
-          subtitle: 'Este é um exemplo de modal',
-          path: root.modal.$link(),
-        })}
+        onClick={() =>
+          showModal({
+            title: "Minha modal",
+            subtitle: "Este é um exemplo de modal",
+            path: root.modal.$link(),
+          })
+        }
       >
         Abrir uma modal
       </Button>
       <Button
         colorScheme="inverse"
-        onClick={() => showRightPanel({
-          title: 'Meu painel',
-          subtitle: 'Este é um exemplo de painel',
-          path: root.modal.$link(),
-        })}
+        onClick={() =>
+          showRightPanel({
+            title: "Meu painel",
+            subtitle: "Este é um exemplo de painel",
+            path: root.modal.$link(),
+          })
+        }
       >
         Abrir o painel lateral
       </Button>
       <Button
         colorScheme="inverse"
-        onClick={() => showToaster({
-          message: 'Hello World',
-          type: 'success',
-        })}
+        onClick={() =>
+          showToaster({
+            message: "Hello World",
+            type: "success",
+          })
+        }
       >
         Abrir um toaster
       </Button>
       <Button
         colorScheme="inverse"
-        onClick={() => alert({
-          title: 'Alerta',
-          subtitle: 'Isso é um alerta!',
-        })}
+        onClick={() =>
+          alert({
+            title: "Alerta",
+            subtitle: "Isso é um alerta!",
+          })
+        }
       >
         Abrir um alerta
       </Button>
@@ -107,19 +119,19 @@ export const Home = ({ route }: ViewPropsOf<'root'>) => (
         colorScheme="inverse"
         onClick={async () => {
           const answer = await confirm({
-            title: 'Confirm',
-            subtitle: 'Isso é uma confirmação',
-          })
+            title: "Confirm",
+            subtitle: "Isso é uma confirmação",
+          });
           // eslint-disable-next-line no-console
-          console.log(answer ? 'confirmado' : 'cancelado')
+          console.log(answer ? "confirmado" : "cancelado");
         }}
       >
         Abrir uma confirmação
       </Button>
-    </Flex>
-    <Text appearance="h3">Exemplo de chamada de rede: listagem de studios</Text>
+    </Flex> */}
+    {/* <Text appearance="h3">Exemplo de chamada de rede: listagem de studios</Text> */}
     {/* The following component will render an error if the extension is not loaded from inside the real EDP Portal.
     To run the extension inside the EDP Portal, use `pnpm preview` in a terminal window. */}
-    <StudiosList />
+    {/* <StudiosList /> */}
   </Styled>
 )
