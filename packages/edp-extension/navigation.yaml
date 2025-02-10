@@ -1,3 +1,4 @@
 + root (/):
   + component (/component/{id}):
   + modal (/modal):
+  + topic (/topic/{id}):
