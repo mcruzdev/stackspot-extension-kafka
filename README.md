@@ -4,7 +4,7 @@ This project is an example and a quick starter for an extension of the EDP porta
 ## Kafka extension
 
 <video width="640" height="360" controls>
-  <source src="./docs/assets/video.webm" type="video/mp4">
+  <source src="./docs/assets/video.mp4" type="video/mp4">
 </video>
 
 ## Pre-installation
