@@ -1,6 +1,10 @@
 # Sample for a Stackspot extension (EDP portal)
 This project is an example and a quick starter for an extension of the EDP portal.
 
+## Kafka extension
+
+[Video](./docs/assets/video.webm)
+
 ## Pre-installation
 1. Make sure you have Node >= 18 installed. To check this, type `node -v` in a terminal window. If you don't have it, follow the instructions
 [here](https://nodejs.org/en).
