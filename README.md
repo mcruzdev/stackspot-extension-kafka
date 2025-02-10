@@ -3,7 +3,9 @@ This project is an example and a quick starter for an extension of the EDP porta
 
 ## Kafka extension
 
-[Video](./docs/assets/video.webm)
+<video width="640" height="360" controls>
+  <source src="./docs/assets/video.webm" type="video/mp4">
+</video>
 
 ## Pre-installation
 1. Make sure you have Node >= 18 installed. To check this, type `node -v` in a terminal window. If you don't have it, follow the instructions
