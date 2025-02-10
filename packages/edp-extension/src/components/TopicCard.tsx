@@ -2,13 +2,13 @@ import { Button, Flex, Link, Text } from '@citric/core'
 import { Badge, Card } from '@citric/ui'
 import styled from 'styled-components'
 
-import { OneOfPalettes } from '@citric/core/dist/theme-types'
+import { envColor } from '../shared/environment-color'
 
 interface Props {
   name: string,
   environment: string,
   partitions: number,
-  replcationFactor: number,
+  replicationFactor: number,
   href: string,
 }
 
@@ -36,16 +36,6 @@ const StyledCard = styled(Card)`
 const StyledFlex = styled(Flex)`
   gap: 12px;
 `
-
-const envColor = (name: string): OneOfPalettes => {
-  const colorMap: Record<string, OneOfPalettes> = {
-    dev: 'cyan',
-    stage: 'blue',
-    production: 'orange',
-  }
-
-  return colorMap[name] || 'cyan'
-}
 
 export const TopicCard = ({ name, environment, href }: Props) => (
   <StyledCard>

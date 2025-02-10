@@ -1,11 +1,8 @@
 import { Button, Flex, Text } from '@citric/core'
-import { alert, confirm, showModal, showRightPanel, showToaster } from '@stack-spot/portal-extension'
-import { ReuseCard } from 'components/ReuseCard'
+import { showRightPanel } from '@stack-spot/portal-extension'
 import { TopicCard } from 'components/TopicCard'
-import { StudiosList } from 'containers/StudiosList'
 import { root, ViewPropsOf } from 'navigation'
 import { styled } from 'styled-components'
-import reuse from '../mock/reuse.json'
 import topics from '../mock/topics.json'
 
 const Styled = styled.div`
@@ -28,6 +25,7 @@ const Styled = styled.div`
   }
 `
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const Home = ({ route }: ViewPropsOf<'root'>) => (
   <Styled>
     <Text appearance="h2" colorScheme="primary">
@@ -53,95 +51,11 @@ export const Home = ({ route }: ViewPropsOf<'root'>) => (
             name={p.name}
             environment={p.environment}
             partitions={p.partitions}
-            replcationFactor={p.replicationFactor}
+            replicationFactor={p.replicationFactor}
             href={root.topic.$link({ id: p.id })}
           />
         </li>
       ))}
     </ul>
-    <Flex justifyContent="space-between" alignItems="center">
-      <Text appearance="h3">EchoBridge</Text>
-      <Button appearance="outlined" colorScheme="inverse">
-        New component
-      </Button>
-    </Flex>
-    <ul className="card-list">
-      {reuse.map((r) => (
-        <li key={r.id}>
-          <ReuseCard
-            description={r.description}
-            name={r.name}
-            requires={r.requires}
-            href={route.component.$link({ id: r.id })}
-          />
-        </li>
-      ))}
-    </ul>
-    <Text appearance="h3">Exemplos de interações com overlays</Text>
-    <Flex>
-      <Button
-        colorScheme="inverse"
-        onClick={() =>
-          showModal({
-            title: 'Minha modal',
-            subtitle: 'Este é um exemplo de modal',
-            path: root.modal.$link(),
-          })
-        }
-      >
-        Abrir uma modal
-      </Button>
-      <Button
-        colorScheme="inverse"
-        onClick={() =>
-          showRightPanel({
-            title: 'Meu painel',
-            subtitle: 'Este é um exemplo de painel',
-            path: root.modal.$link(),
-          })
-        }
-      >
-        Abrir o painel lateral
-      </Button>
-      <Button
-        colorScheme="inverse"
-        onClick={() =>
-          showToaster({
-            message: 'Hello World',
-            type: 'success',
-          })
-        }
-      >
-        Abrir um toaster
-      </Button>
-      <Button
-        colorScheme="inverse"
-        onClick={() =>
-          alert({
-            title: 'Alerta',
-            subtitle: 'Isso é um alerta!',
-          })
-        }
-      >
-        Abrir um alerta
-      </Button>
-      <Button
-        colorScheme="inverse"
-        onClick={async () => {
-          const answer = await confirm({
-            title: 'Confirm',
-            subtitle: 'Isso é uma confirmação',
-          })
-          // eslint-disable-next-line no-console
-          console.log(answer ? 'confirmado' : 'cancelado')
-        }}
-      >
-        Abrir uma confirmação
-      </Button>
-    </Flex>
-    <Text appearance="h3">Exemplo de chamada de rede: listagem de studios</Text>
-    {/* The following component will render an error if the extension is not loaded from inside the real EDP Portal.
-    To run the extension inside the EDP Portal, use `pnpm preview` in a terminal window. */}
-    <StudiosList />
   </Styled>
 )
